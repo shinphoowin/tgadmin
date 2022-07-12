@@ -2,7 +2,7 @@
     <x-slot name="header">
         <a href="{{route('request_finances.pending')}}" class="btn btn-warning">待办的 列表</a>
         <a href="{{route('request_finances.finish')}}" class="btn btn-success">结束 列表</a>
-       
+
         <h1 class=" text-xl text-gray-800 leading-tight mt-3">
             待办的 列表
         </h1>
@@ -16,7 +16,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <nav class="navbar navbar-light mb-1" style="background: #39405A; ">
                         <div class="container-fluid">
-                           
+
                             <form action="{{route('request_finances.pending')}}" method="GET" class="d-flex" style="margin-left:75%;">
                                 <input name="search" class="form-control me-2" type="search" placeholder="搜索" value="{{request('search')}}" aria-label="Search">
                                 <button class="btn btn-outline-success" type="submit" style="width: 100px;">搜索</button>
@@ -35,7 +35,7 @@
                                 <th scope="col">财务发生时间</th>
                                 <th scope="col">状态</th>
                                 <th scope="col">行动</th>
-                               
+
                             </tr>
                         </thead>
                         <tbody>
@@ -73,12 +73,12 @@
                                         <a href="{{route('request_finances.draw', $one_pending->bfid)}}" class="btn btn-warning" onclick="return confirm('您确定要提现吗?')">证实 提现</a>
                                         @endif
                                     </td>
-                                    
+
                                 </tr>
                                 @endforeach
                             @endif
                         </tbody>
-                        <tfoot style=" background:#5B6977;">
+                        <!-- <tfoot style=" background:#5B6977;">
                             <tr>
                                 <th scope="col">机器人财务编号 </th>
                                 <th scope="col">进出</th>
@@ -89,10 +89,10 @@
                                 <th scope="col">财务发生时间</th>
                                 <th scope="col">状态</th>
                                 <th scope="col">行动</th>
-                                
+
                             </tr>
 
-                        </tfoot>
+                        </tfoot> -->
                     </table>
                     {!! $pending->links() !!}
                 </div>

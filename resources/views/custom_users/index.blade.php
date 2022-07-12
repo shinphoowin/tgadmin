@@ -76,7 +76,7 @@
                                 @endforeach
                             @endif
                         </tbody>
-                        <tfoot style=" background:#5B6977;">
+                        <!-- <tfoot style=" background:#5B6977;">
                             <tr>
                                 <th scope="col">用户身份</th>
                                 <th scope="col">聊天身份</th>
@@ -89,7 +89,7 @@
                                 <th scope="col">操作</th>
                             </tr>
 
-                        </tfoot>
+                        </tfoot> -->
                     </table>
 
                     {!! $custom_users->links() !!}

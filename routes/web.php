@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\BetRecordController;
-use App\Http\Controllers\CustomUserController;
-use App\Http\Controllers\FinanceController;
-use App\Http\Controllers\RequestFinanceController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,37 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
-
-
-Route::get('custom-users', [CustomUserController::class, 'index'])->name('custom_users.index');
-Route::get('status/{id}', [CustomUserController::class, 'status'])->name('custom_users.status');
-
-Route::get('custom-users/withdraw/{custom_user}', [CustomUserController::class, 'withdraw'])->name('custom_users.withdraw');
-Route::put('custom-users/withdraw/{custom_user}', [CustomUserController::class, 'withdrawupdate'])->name('custom_users.withdrawupdate');
-
-
-Route::get('custom-users/charge/{custom_user}', [CustomUserController::class, 'charge'])->name('custom_users.charge');
-Route::put('custom-users/charge/{custom_user}', [CustomUserController::class, 'chargeupdate'])->name('custom_users.chargeupdate');
-
-
-
-Route::get('finances',[FinanceController::class,'index'])->name('finances.index');
-
-Route::get('betrecords',[BetRecordController::class,'index'])->name('betrecords.index');
-
-Route::get('request_finance/pending',[RequestFinanceController::class,'pending'])->name('request_finances.pending');
-Route::get('request_finance/finish',[RequestFinanceController::class,'finish'])->name('request_finances.finish');
-Route::get('request_finance/bot_charge/{id}',[RequestFinanceController::class,'charge'])->name('request_finances.charge');
-Route::get('request_finance/bot_draw/{id}',[RequestFinanceController::class,'draw'])->name('request_finances.draw');
-
-
-
-
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/twc', function(){
+  return Inertia::render('TailWindComponent');
+});
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

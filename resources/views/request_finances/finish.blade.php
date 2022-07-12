@@ -1,7 +1,7 @@
 <x-app-layout title="Finish List">
     <x-slot name="header">
         <a href="{{route('request_finances.pending')}} " class="btn btn-success" style="margin-bottom:12px;"> 退出</a>
-       
+
         <h1 class="text-xl text-gray-800 leading-tight" >
             结束 列表
         </h1>
@@ -21,7 +21,7 @@
                         </div>
                     </nav>
                     <table class="table table-striped table-hover table-borderless">
-                        
+
                         <thead style="background: #5B6977">
                             <tr>
                                 <th scope="col">机器人财务编号 </th>
@@ -32,8 +32,8 @@
                                 <th scope="col">用户名</th>
                                 <th scope="col">财务发生时间</th>
                                 <th scope="col">状态</th>
-                                
-                                
+
+
                             </tr>
                         </thead>
                         <tbody>
@@ -68,13 +68,11 @@
                                             <span class="text-success">结束</span>
                                         @endif
                                     </td>
-                                    
-                                    
                                 </tr>
                                 @endforeach
                             @endif
                         </tbody>
-                        <tfoot style=" background:#5B6977;">
+                        <!-- <tfoot style=" background:#5B6977;">
                             <tr>
                                 <th scope="col">机器人财务编号 </th>
                                 <th scope="col">进出</th>
@@ -84,10 +82,10 @@
                                 <th scope="col">用户名</th>
                                 <th scope="col">财务发生时间</th>
                                 <th scope="col">状态</th>
-                               
+
                             </tr>
-                            
-                        </tfoot>
+
+                        </tfoot> -->
                     </table>
                     {!! $finish->links() !!}
                 </div>
